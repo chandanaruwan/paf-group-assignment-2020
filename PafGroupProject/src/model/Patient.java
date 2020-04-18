@@ -96,15 +96,15 @@ public class Patient {
 	}
 	
 	
-	String query = " insert into customer(`fname`,`lname`,`nic`,`sex`,`address`,`phone`)"+ "values(?,?,?,?,?,?)";
+	String query = " insert into customer(`patientID`,`fname`,`lname`,`nic`,`sex`,`address`,`phone`)"+ "values(?,?,?,?,?,?,?)";
 	PreparedStatement preparedStmt = con.prepareStatement(query);
-	//preparedStmt.setInt(1,0);
-	preparedStmt.setString(1,fname);
-	preparedStmt.setString(2,lname);
-	preparedStmt.setString(3,nic);
-	preparedStmt.setString(4,sex);
-	preparedStmt.setString(5,address);
-	preparedStmt.setString(6,phone);
+	preparedStmt.setInt(1,6);
+	preparedStmt.setString(2,fname);
+	preparedStmt.setString(3,lname);
+	preparedStmt.setString(4,nic);
+	preparedStmt.setString(5,sex);
+	preparedStmt.setString(6,address);
+	preparedStmt.setString(7,phone);
 	
 	preparedStmt.execute();
 	con.close();

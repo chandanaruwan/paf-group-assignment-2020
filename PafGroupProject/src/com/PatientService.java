@@ -40,9 +40,6 @@ public class PatientService {
     	}
 
 
-     
-    
-    
 	
 	@POST
 	@Path("/")
@@ -56,6 +53,9 @@ public class PatientService {
 	@FormParam("address") String address,
 	@FormParam("phone") String phone)
 	{
+		
+		 Patient cusObj = new Patient();
+		    
 	String output = cusObj.insertPatient(fname,lname,nic,sex,address,phone);
 	return output;
 	}
