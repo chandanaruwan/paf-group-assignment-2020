@@ -36,7 +36,7 @@ public class Patient {
 	if (con == null)
 	{return "Error while connecting to the database for reading."; }
 	
-	output = "<table border=\"1\"><tr><th>PatientID</th><th>FirstName</th><th>LastName</th><th>Nic</th><th>Sex</th><th>Address</th><th>Phone</th><th>Update</th><th>Remove</th></tr>";
+	output = "<table border=\"1\"><tr><th>PatientID</th><th>FirstName</th><th>LastName</th><th>Nic</th><th>Sex</th><th>Address</th><th>Phone</th><th>Email</th><th>Update</th><th>Remove</th></tr>";
 	String query = "select * from customer";
 	Statement stmt = con.createStatement();
 	ResultSet rs = stmt.executeQuery(query);
@@ -50,6 +50,7 @@ public class Patient {
 	String sex = rs.getString("sex");
 	String address = rs.getString("address");
 	String phone = rs.getString("phone");
+	String email = rs.getString("email");
 	
 	
 	output += "<tr><td>" + patientID + "</td>";
@@ -59,6 +60,7 @@ public class Patient {
 	output += "<td>" + sex + "</td>";
 	output += "<td>" +address + "</td>";
 	output += "<td>" + phone+ "</td>";
+	output += "<td>" + email+ "</td>";
 	
 	/*output += "<td><input name=\"btnUpdate\" type=\"button\"value=\"Update\" class=\"btn btn-secondary\"></td>"+ "<td><form method=\"post\" action=\"patient.jsp\">"+ "<input name=\"btnRemove\" type=\"submit\" value=\"Remove\"class=\"btn btn-danger\">"
 	+ "<input name=\"patientID\" type=\"hidden\" value=\"" + patientID+ "\">" + "</form></td></tr>";
@@ -85,7 +87,7 @@ public class Patient {
 	
 	
 	
-	public String insertPatient(String fname, String lname, String nic, String sex,String address,String phone)
+	public String insertPatient(String fname, String lname, String nic, String sex,String address,String phone,String email,String password)
 	{
 	String output = "";
 	try
@@ -96,7 +98,7 @@ public class Patient {
 	}
 	
 	
-	String query = " insert into customer(`patientID`,`fname`,`lname`,`nic`,`sex`,`address`,`phone`)"+ "values(?,?,?,?,?,?,?)";
+	String query = " insert into customer(`patientID`,`fname`,`lname`,`nic`,`sex`,`address`,`phone`,`email`,`password`)"+ "values(?,?,?,?,?,?,?,?,?)";
 	PreparedStatement preparedStmt = con.prepareStatement(query);
 	preparedStmt.setInt(1,6);
 	preparedStmt.setString(2,fname);
@@ -105,6 +107,8 @@ public class Patient {
 	preparedStmt.setString(5,sex);
 	preparedStmt.setString(6,address);
 	preparedStmt.setString(7,phone);
+	preparedStmt.setString(6,email);
+	preparedStmt.setString(7,password);
 	
 	preparedStmt.execute();
 	con.close();
@@ -120,7 +124,7 @@ public class Patient {
 	}
 	 
 	
-	public String updatePatient(String patientID, String fname, String lname, String nic, String sex,String address, String phone)
+	public String updatePatient(String patientID, String fname, String lname, String nic, String sex,String address, String phone,String email,String password)
 	{
 	String output = "";
 	try
@@ -132,7 +136,7 @@ public class Patient {
 	}
 	// create a prepared statement
 	
-	String query = "UPDATE customer SET patientID=?,fname=?,lname=?,nic=?,sex=?,address=?,phone=? WHERE patientID=?";
+	String query = "UPDATE customer SET patientID=?,fname=?,lname=?,nic=?,sex=?,address=?,phone=?,email=?,password=? WHERE patientID=?";
 	PreparedStatement preparedStmt = con.prepareStatement(query);
 	// binding values
 	preparedStmt.setString(1, fname);
@@ -141,6 +145,8 @@ public class Patient {
 	preparedStmt.setString(4, sex);
 	preparedStmt.setString(5, address);
 	preparedStmt.setString(6, phone);
+	preparedStmt.setString(5, email);
+	preparedStmt.setString(6, password);
 	preparedStmt.setInt(7, Integer.parseInt(patientID));
 	// execute the statement
 	preparedStmt.execute();

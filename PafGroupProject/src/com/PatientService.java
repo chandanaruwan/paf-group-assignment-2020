@@ -51,12 +51,14 @@ public class PatientService {
 	@FormParam("nic") String nic,
 	@FormParam("sex") String sex,
 	@FormParam("address") String address,
-	@FormParam("phone") String phone)
+	@FormParam("phone") String phone,
+	@FormParam("address") String email,
+	@FormParam("phone") String password)
 	{
 		
 		 Patient cusObj = new Patient();
 		    
-	String output = cusObj.insertPatient(fname,lname,nic,sex,address,phone);
+	String output = cusObj.insertPatient(fname,lname,nic,sex,address,phone,email,password);
 	return output;
 	}
 	
@@ -79,8 +81,10 @@ public class PatientService {
 	String sex = itemObject.get("sex").getAsString();
 	String address = itemObject.get("address").getAsString();
 	String phone = itemObject.get("phone").getAsString();
+	String email = itemObject.get("email").getAsString();
+	String password = itemObject.get("password").getAsString();
 
-	String output = cusObj.updatePatient(patientID,fname,lname,nic,sex,address,phone);
+	String output = cusObj.updatePatient(patientID,fname,lname,nic,sex,address,phone,email,password);
 	return output;
 	}
 	
