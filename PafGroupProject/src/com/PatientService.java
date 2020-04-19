@@ -56,7 +56,7 @@ public class PatientService {
 	@FormParam("phone") String password)
 	{
 		
-		 Patient cusObj = new Patient();
+	 Patient cusObj = new Patient();
 		    
 	String output = cusObj.insertPatient(fname,lname,nic,sex,address,phone,email,password);
 	return output;

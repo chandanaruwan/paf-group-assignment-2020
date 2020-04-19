@@ -67,7 +67,7 @@ public class Patient {
 	}
 	*/
 	
-	output += "<td><input name=\"btnUpdate\" type=\"button\"value=\"Update\" class=\"btn btn-secondary\"></td>"+ "<td><form method=\"post\" action=\"items.jsp\">"+ "<input name=\"btnRemove\" type=\"submit\" value=\"Remove\"class=\"btn btn-danger\">"
+	output += "<td><input name=\"btnUpdate\" type=\"button\"value=\"Update\" class=\"btn btn-secondary\"></td>"+ "<td><form method=\"post\" action=\"patient.jsp\">"+ "<input name=\"btnRemove\" type=\"submit\" value=\"Remove\"class=\"btn btn-danger\">"
 			 + "</form></td></tr>";
 			}
 	con.close();
@@ -100,7 +100,7 @@ public class Patient {
 	
 	String query = " insert into customer(`patientID`,`fname`,`lname`,`nic`,`sex`,`address`,`phone`,`email`,`password`)"+ "values(?,?,?,?,?,?,?,?,?)";
 	PreparedStatement preparedStmt = con.prepareStatement(query);
-	preparedStmt.setInt(1,6);
+	preparedStmt.setInt(1,0);
 	preparedStmt.setString(2,fname);
 	preparedStmt.setString(3,lname);
 	preparedStmt.setString(4,nic);
@@ -136,7 +136,7 @@ public class Patient {
 	}
 	// create a prepared statement
 	
-	String query = "UPDATE customer SET patientID=?,fname=?,lname=?,nic=?,sex=?,address=?,phone=?,email=?,password=? WHERE patientID=?";
+	String query = "UPDATE customer SET fname=?,lname=?,nic=?,sex=?,address=?,phone=?,email=?,password=? WHERE patientID=?";
 	PreparedStatement preparedStmt = con.prepareStatement(query);
 	// binding values
 	preparedStmt.setString(1, fname);
@@ -145,9 +145,9 @@ public class Patient {
 	preparedStmt.setString(4, sex);
 	preparedStmt.setString(5, address);
 	preparedStmt.setString(6, phone);
-	preparedStmt.setString(5, email);
-	preparedStmt.setString(6, password);
-	preparedStmt.setInt(7, Integer.parseInt(patientID));
+	preparedStmt.setString(7, email);
+	preparedStmt.setString(8, password);
+	preparedStmt.setInt(9, Integer.parseInt(patientID));
 	// execute the statement
 	preparedStmt.execute();
 	con.close();
