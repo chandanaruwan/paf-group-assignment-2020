@@ -1,14 +1,17 @@
 package model;
 
 import java.sql.Connection;
+import model.Validation;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+
 public class Patient {
 	
 
+	Validation v = new Validation();
 	
 	private Connection connect()
 	{
@@ -96,7 +99,20 @@ public class Patient {
 	if (con == null)
 	{return "Error while connecting to the database for inserting."; 
 	}
-	
+	else if(!v.validTNO(phone)){
+		return "Error!! Phone Number Is not Mach.Check Your Phone Number Again" ;
+		
+	}
+	/*
+	else if(!v.EmailValidation(email)){
+		return "Error!! Email  Is not Mach.Check Your Email Again" ;
+		
+	}
+	*/
+	else if(!v.validID(nic)){
+		return "Error!! NIC Field  Is not Mach.Check Your NIC Again" ;
+		
+	}
 	
 	String query = " insert into customer(`patientID`,`fname`,`lname`,`nic`,`sex`,`address`,`phone`,`email`,`password`)"+ "values(?,?,?,?,?,?,?,?,?)";
 	PreparedStatement preparedStmt = con.prepareStatement(query);

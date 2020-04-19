@@ -6,9 +6,9 @@ import java.util.regex.Pattern;
 public class Validation {
 
 	//check first name and last name only with letters
-	public static boolean isLettersOnly(String str) {
+	public static boolean isLettersOnly(String lname) {
 	    String expression = "^[a-zA-Z.\\s]+"; 
-	    return str.matches(expression);        
+	    return lname.matches(expression);        
 	    }	
 	
 	//check whether the field is empty
@@ -25,13 +25,13 @@ public class Validation {
 	
 	
 	//check phone number
-	 public boolean validTNO(String tno)
+	 public boolean validTNO(String phone)
 	 {
-	     if(tno.length()==10 && tno.startsWith("0"))
+	     if(phone.length()==10 && phone.startsWith("0"))
 	       {
 	     	for(int i=0;i<10;i++)
 	          {
-	     		char c=tno.charAt(i);
+	     		char c=phone.charAt(i);
 	    			 if(!Character.isDigit(c))
 	     				return false;
 	     	  }
