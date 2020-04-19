@@ -31,11 +31,11 @@ public class PatientService {
     @Path("/")
     @Produces(MediaType.TEXT_HTML)
 
-    public String readItems()
+    public String patientview()
      {
        	
     	
-    	return cusObj.readItems(); 
+    	return cusObj.patientview(); 
     	//return "Patient Registration" ;
     	}
 

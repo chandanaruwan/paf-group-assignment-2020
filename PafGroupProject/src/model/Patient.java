@@ -30,7 +30,7 @@ public class Patient {
 	}
 	
 	
-	public String readItems()
+	public String patientview()
 	{
 	String output = "";
 	try
