@@ -107,8 +107,8 @@ public class Patient {
 	preparedStmt.setString(5,sex);
 	preparedStmt.setString(6,address);
 	preparedStmt.setString(7,phone);
-	preparedStmt.setString(6,email);
-	preparedStmt.setString(7,password);
+	preparedStmt.setString(8,email);
+	preparedStmt.setString(9,password);
 	
 	preparedStmt.execute();
 	con.close();
